@@ -1,0 +1,423 @@
+/*! Verdant UI — Base Styles & Utilities v1.0
+ *  https://icomb.place/design-system/verdant-base.css
+ *
+ *  Requires: verdant-tokens.css loaded first.
+ *  Provides: reset, base styles, glass utilities, animations, component classes.
+ *
+ *  Usage:
+ *    @import url('https://icomb.place/design-system/verdant-tokens.css');
+ *    @import url('https://icomb.place/design-system/verdant-base.css');
+ */
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   1. RESET & BASE
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--vui-font-sans);
+  font-size: var(--vui-text-sm);
+  color: var(--vui-text);
+  background: var(--vui-bg-deep);
+  line-height: 1.5;
+}
+
+::selection {
+  background: rgba(79, 201, 120, 0.25);
+  color: var(--vui-text);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.06); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.12); }
+
+/* Placeholder */
+::placeholder { color: var(--vui-text-dim); }
+
+/* Focus visible ring */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--vui-shadow-focus);
+  border-color: rgba(79, 201, 120, 0.4) !important;
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   2. GLASS UTILITIES
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.vui-glass {
+  background: var(--vui-glass);
+  backdrop-filter: blur(var(--vui-glass-blur));
+  -webkit-backdrop-filter: blur(var(--vui-glass-blur));
+  border: 1px solid var(--vui-glass-border);
+}
+
+.vui-glass-strong {
+  background: rgba(30, 42, 56, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--vui-glass-border);
+}
+
+.vui-glass-inner-glow {
+  box-shadow: var(--vui-shadow-inner);
+}
+
+.vui-surface {
+  background: var(--vui-surface);
+  border: 1px solid var(--vui-border);
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   3. ANIMATIONS
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@keyframes vui-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vui-slide-down {
+  from { opacity: 0; transform: translateY(-8px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes vui-slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes vui-slide-in-left {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes vui-slide-in-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes vui-scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes vui-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes vui-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes vui-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+
+/* Animation utility classes */
+.vui-animate-fade-in     { animation: vui-fade-in var(--vui-duration-slow) var(--vui-ease-default) both; }
+.vui-animate-slide-down  { animation: vui-slide-down var(--vui-duration-fast) var(--vui-ease-default) both; }
+.vui-animate-slide-up    { animation: vui-slide-up var(--vui-duration-base) var(--vui-ease-default) both; }
+.vui-animate-scale-in    { animation: vui-scale-in var(--vui-duration-base) var(--vui-ease-default) both; }
+.vui-animate-toast       { animation: vui-slide-in-right 250ms var(--vui-ease-spring) both; }
+.vui-animate-modal       { animation: vui-scale-in var(--vui-duration-base) var(--vui-ease-default) both; }
+.vui-animate-sidebar     { animation: vui-slide-in-left 250ms var(--vui-ease-spring) both; }
+.vui-animate-spin        { animation: vui-spin 0.8s linear infinite; }
+.vui-animate-pulse       { animation: vui-pulse 2s ease infinite; }
+
+/* Staggered fade-in for card lists */
+.vui-stagger > * { animation: vui-fade-in var(--vui-duration-slow) var(--vui-ease-default) both; }
+.vui-stagger > *:nth-child(1)  { animation-delay: 0.02s; }
+.vui-stagger > *:nth-child(2)  { animation-delay: 0.04s; }
+.vui-stagger > *:nth-child(3)  { animation-delay: 0.06s; }
+.vui-stagger > *:nth-child(4)  { animation-delay: 0.08s; }
+.vui-stagger > *:nth-child(5)  { animation-delay: 0.10s; }
+.vui-stagger > *:nth-child(6)  { animation-delay: 0.12s; }
+.vui-stagger > *:nth-child(7)  { animation-delay: 0.14s; }
+.vui-stagger > *:nth-child(8)  { animation-delay: 0.16s; }
+.vui-stagger > *:nth-child(9)  { animation-delay: 0.18s; }
+.vui-stagger > *:nth-child(10) { animation-delay: 0.20s; }
+.vui-stagger > *:nth-child(11) { animation-delay: 0.22s; }
+.vui-stagger > *:nth-child(12) { animation-delay: 0.24s; }
+
+/* Shimmer skeleton */
+.vui-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 25%,
+    rgba(255,255,255,0.08) 50%,
+    rgba(255,255,255,0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: vui-shimmer 1.5s ease infinite;
+  border-radius: var(--vui-radius-sm);
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   4. INTERACTION UTILITIES
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+.vui-hover-lift {
+  transition: transform var(--vui-duration-base) var(--vui-ease-default),
+              box-shadow var(--vui-duration-base) var(--vui-ease-default);
+}
+.vui-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--vui-shadow-lg);
+}
+.vui-hover-lift:active {
+  transform: translateY(0);
+}
+
+.vui-transition {
+  transition: all var(--vui-duration-fast) var(--vui-ease-default);
+}
+
+.vui-transition-base {
+  transition: all var(--vui-duration-base) var(--vui-ease-default);
+}
+
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   5. COMPONENT CLASSES
+   These are optional convenience classes.
+   In SvelteKit, you'd typically use Bits UI +
+   Tailwind, but these work for any HTML.
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* ── Buttons ── */
+.vui-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: var(--vui-radius-md);
+  font-family: var(--vui-font-sans);
+  font-size: var(--vui-text-sm);
+  font-weight: var(--vui-font-semibold);
+  line-height: 1;
+  cursor: pointer;
+  border: none;
+  transition: all var(--vui-duration-fast) var(--vui-ease-default);
+  text-decoration: none;
+}
+.vui-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.vui-btn-primary {
+  background: var(--vui-accent);
+  color: var(--vui-accent-text);
+}
+.vui-btn-primary:hover:not(:disabled) {
+  background: var(--vui-accent-hover);
+}
+.vui-btn-secondary {
+  background: var(--vui-glass);
+  backdrop-filter: blur(var(--vui-glass-blur));
+  -webkit-backdrop-filter: blur(var(--vui-glass-blur));
+  color: var(--vui-text);
+  border: 1px solid var(--vui-glass-border);
+}
+.vui-btn-secondary:hover:not(:disabled) {
+  border-color: var(--vui-border-hover);
+}
+.vui-btn-outline {
+  background: transparent;
+  color: var(--vui-accent);
+  border: 1px solid var(--vui-accent-border);
+}
+.vui-btn-outline:hover:not(:disabled) {
+  background: var(--vui-accent-dim);
+}
+.vui-btn-ghost {
+  background: transparent;
+  color: var(--vui-text-muted);
+}
+.vui-btn-ghost:hover:not(:disabled) {
+  color: var(--vui-text);
+  background: rgba(255, 255, 255, 0.04);
+}
+.vui-btn-danger {
+  background: var(--vui-danger-dim);
+  color: var(--vui-danger);
+  border: 1px solid var(--vui-danger-border);
+}
+.vui-btn-danger:hover:not(:disabled) {
+  background: rgba(248, 113, 113, 0.15);
+}
+.vui-btn-sm  { padding: 5px 10px; font-size: 0.6875rem; }
+.vui-btn-lg  { padding: 12px 24px; font-size: 0.9375rem; }
+.vui-btn-icon {
+  width: 36px; height: 36px; padding: 0;
+  justify-content: center;
+  border-radius: var(--vui-radius-lg);
+}
+
+/* ── Inputs ── */
+.vui-input {
+  width: 100%;
+  background: var(--vui-glass);
+  backdrop-filter: blur(var(--vui-glass-blur));
+  -webkit-backdrop-filter: blur(var(--vui-glass-blur));
+  border: 1px solid var(--vui-glass-border);
+  border-radius: var(--vui-radius-md);
+  padding: 10px 14px;
+  color: var(--vui-text);
+  font-family: var(--vui-font-sans);
+  font-size: var(--vui-text-sm);
+  outline: none;
+  transition: border-color var(--vui-duration-base) var(--vui-ease-default),
+              box-shadow var(--vui-duration-base) var(--vui-ease-default);
+}
+.vui-input:focus {
+  border-color: rgba(79, 201, 120, 0.4);
+  box-shadow: var(--vui-shadow-focus);
+}
+.vui-input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vui-input-group .vui-input {
+  border: none;
+  background: none;
+  backdrop-filter: none;
+  padding: 0;
+}
+
+/* ── Badges ── */
+.vui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px 4px 8px;
+  border-radius: var(--vui-radius-full);
+  font-size: 0.71875rem; /* 11.5px */
+  font-weight: var(--vui-font-semibold);
+  line-height: 1;
+}
+.vui-badge-success { background: var(--vui-accent-dim);  color: var(--vui-accent);  border: 1px solid var(--vui-accent-border);  }
+.vui-badge-warning { background: var(--vui-warning-dim); color: var(--vui-warning); border: 1px solid var(--vui-warning-border); }
+.vui-badge-danger  { background: var(--vui-danger-dim);  color: var(--vui-danger);  border: 1px solid var(--vui-danger-border);  }
+.vui-badge-info    { background: var(--vui-info-dim);    color: var(--vui-info);    border: 1px solid var(--vui-info-border);    }
+.vui-badge-purple  { background: var(--vui-purple-dim);  color: var(--vui-purple);  border: 1px solid var(--vui-purple-border);  }
+.vui-badge-dot {
+  width: 6px; height: 6px;
+  border-radius: var(--vui-radius-full);
+  background: currentColor;
+}
+
+/* ── Cards ── */
+.vui-card {
+  background: var(--vui-glass);
+  backdrop-filter: blur(var(--vui-glass-blur));
+  -webkit-backdrop-filter: blur(var(--vui-glass-blur));
+  border: 1px solid var(--vui-glass-border);
+  border-radius: var(--vui-radius-lg);
+  padding: 18px;
+}
+
+/* ── Alerts ── */
+.vui-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--vui-radius-md);
+  font-size: var(--vui-text-sm);
+}
+.vui-alert-success { background: var(--vui-accent-dim);  border: 1px solid var(--vui-accent-border);  }
+.vui-alert-warning { background: var(--vui-warning-dim); border: 1px solid var(--vui-warning-border); }
+.vui-alert-danger  { background: var(--vui-danger-dim);  border: 1px solid var(--vui-danger-border);  }
+.vui-alert-info    { background: var(--vui-info-dim);    border: 1px solid var(--vui-info-border);    }
+
+/* ── Overlay / Backdrop ── */
+.vui-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ── Section header ── */
+.vui-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.625rem; /* 10px */
+  font-weight: var(--vui-font-bold);
+  color: var(--vui-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--vui-space-md);
+}
+.vui-section-header::before {
+  content: '';
+  display: block;
+  width: 16px;
+  height: 1px;
+  background: var(--vui-accent-border);
+}
+
+/* ── Toolbar ── */
+.vui-toolbar {
+  display: flex;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--vui-radius-md);
+  padding: 3px;
+}
+
+/* ── Dropdown panel ── */
+.vui-dropdown {
+  background: var(--vui-glass);
+  backdrop-filter: blur(var(--vui-glass-blur));
+  -webkit-backdrop-filter: blur(var(--vui-glass-blur));
+  border: 1px solid var(--vui-glass-border);
+  border-radius: var(--vui-radius-md);
+  box-shadow: var(--vui-shadow-xl);
+  overflow: hidden;
+  animation: vui-slide-down var(--vui-duration-fast) var(--vui-ease-default);
+}
+.vui-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 14px;
+  font-size: var(--vui-text-sm);
+  color: var(--vui-text-sub);
+  cursor: pointer;
+  transition: background var(--vui-duration-fast) var(--vui-ease-default);
+}
+.vui-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.vui-dropdown-item[data-active] {
+  color: var(--vui-accent);
+  background: var(--vui-accent-dim);
+}
+.vui-dropdown-item[data-danger] {
+  color: var(--vui-danger);
+}
+.vui-dropdown-divider {
+  height: 1px;
+  background: var(--vui-border);
+  margin: 4px 0;
+}
