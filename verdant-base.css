@@ -438,3 +438,12 @@ td, .vui-card td {
   font-size: var(--vui-text-sm);
   padding: var(--vui-space-sm);
 }
+
+/* ── Checkbox ── */
+.vui-checkbox,
+input[type="checkbox"].vui-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--vui-accent);
+  cursor: pointer;
+}
