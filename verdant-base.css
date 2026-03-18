@@ -361,7 +361,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.625rem; /* 10px */
+  font-size: var(--vui-text-sm); /* 13px */
   font-weight: var(--vui-font-bold);
   color: var(--vui-accent);
   letter-spacing: 0.08em;
@@ -420,4 +420,21 @@ body {
   height: 1px;
   background: var(--vui-border);
   margin: 4px 0;
+}
+
+/* ── Table defaults ── */
+thead th, .vui-card th {
+  font-size: var(--vui-text-sm);
+  font-weight: var(--vui-font-semibold);
+  color: var(--vui-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: var(--vui-space-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--vui-border);
+}
+td, .vui-card td {
+  color: var(--vui-text);
+  font-size: var(--vui-text-sm);
+  padding: var(--vui-space-sm);
 }
