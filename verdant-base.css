@@ -42,7 +42,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.12); }
 
 /* Placeholder */
-::placeholder { color: var(--vui-text-dim); }
+::placeholder { color: var(--vui-text-muted); }
 
 /* Focus visible ring */
 :focus-visible {
