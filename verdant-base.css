@@ -361,6 +361,8 @@ body {
   font-size: var(--vui-text-xl);
   font-weight: var(--vui-font-bold);
   color: var(--vui-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 /* ── Section header ── */
