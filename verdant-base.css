@@ -457,6 +457,29 @@ input[type="checkbox"].vui-checkbox {
   cursor: pointer;
 }
 
+/* ── Progress bar ── */
+.vui-progress-wrap {
+  height: 6px;
+  background: var(--vui-border);
+  border-radius: var(--vui-radius-sm);
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+
+.vui-progress-bar {
+  height: 100%;
+  background: var(--vui-accent);
+  border-radius: var(--vui-radius-sm);
+  transition: width 0.2s ease;
+}
+
+.vui-progress-label {
+  text-align: right;
+  font-size: var(--vui-text-xs);
+  margin-bottom: var(--vui-space-sm);
+  color: var(--vui-text-sub);
+}
+
 /* ── Spacing utilities ── */
 .mt-xs { margin-top: var(--vui-space-xs); }
 .mt-sm { margin-top: var(--vui-space-sm); }
