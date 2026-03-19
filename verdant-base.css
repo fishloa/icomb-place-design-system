@@ -447,3 +447,19 @@ input[type="checkbox"].vui-checkbox {
   accent-color: var(--vui-accent);
   cursor: pointer;
 }
+
+/* ── Spacing utilities ── */
+.mt-xs { margin-top: var(--vui-space-xs); }
+.mt-sm { margin-top: var(--vui-space-sm); }
+.mt-md { margin-top: var(--vui-space-md); }
+.mt-lg { margin-top: var(--vui-space-lg); }
+.mt-xl { margin-top: var(--vui-space-xl); }
+.mb-xs { margin-bottom: var(--vui-space-xs); }
+.mb-sm { margin-bottom: var(--vui-space-sm); }
+.mb-md { margin-bottom: var(--vui-space-md); }
+.mb-lg { margin-bottom: var(--vui-space-lg); }
+.mb-xl { margin-bottom: var(--vui-space-xl); }
+.gap-xs { gap: var(--vui-space-xs); }
+.gap-sm { gap: var(--vui-space-sm); }
+.gap-md { gap: var(--vui-space-md); }
+.gap-lg { gap: var(--vui-space-lg); }

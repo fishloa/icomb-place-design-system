@@ -77,10 +77,16 @@ Tokens available via `var(--vui-accent)` etc. In Tailwind, use `bg-accent`, `tex
   --border:         rgba(255, 255, 255, 0.06);
   --border-hover:   rgba(255, 255, 255, 0.13);
 
-  /* ── Text ── */
+  /* ── Text hierarchy (use in descending brightness) ──
+     --vui-text       Primary: table data, names, values, body text
+     --vui-text-sub   Secondary: descriptions, metadata, labels
+     --vui-text-muted Tertiary: placeholders, hints, inactive tabs
+     --vui-text-dim   Disabled ONLY: greyed-out controls
+     NEVER use --vui-text-dim for readable content. */
   --text:           #e0e8f0;
-  --text-sub:       #94a3b8;
-  --text-muted:     #6b7d90;
+  --text-sub:       #c0ccda;
+  --text-muted:     #a0b0c0;
+  --text-dim:       #6b7d90;
   --text-dim:       #3e5068;
 
   /* ── Accent (Emerald Green) ── */

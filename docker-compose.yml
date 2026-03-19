@@ -1,0 +1,7 @@
+services:
+  design-system:
+    build: .
+    image: ghcr.io/fishloa/icomb-place-design-system:latest
+    restart: unless-stopped
+    ports:
+      - "8096:80"

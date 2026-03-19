@@ -30,11 +30,17 @@
   --vui-border:           rgba(255, 255, 255, 0.06);
   --vui-border-hover:     rgba(255, 255, 255, 0.13);
 
-  /* ── Text hierarchy ── */
+  /* ── Text hierarchy ──
+     Use these in descending brightness:
+       --vui-text       Primary content: table data, names, values, body text
+       --vui-text-sub   Secondary: descriptions, metadata, labels, subheadings
+       --vui-text-muted Tertiary: placeholder text, hints, inactive tabs, captions
+       --vui-text-dim   Disabled only: greyed-out controls, inactive/disabled elements
+     NEVER use --vui-text-dim for readable content. */
   --vui-text:             #e0e8f0;
-  --vui-text-sub:         #b0bec9;
-  --vui-text-muted:       #8a9bb0;
-  --vui-text-dim:         #5e7a94;
+  --vui-text-sub:         #c0ccda;
+  --vui-text-muted:       #a0b0c0;
+  --vui-text-dim:         #6b7d90;
 
   /* ── Accent (Emerald) ── */
   --vui-accent:           #4fc978;
