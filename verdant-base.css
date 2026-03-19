@@ -356,6 +356,13 @@ body {
   -webkit-backdrop-filter: blur(4px);
 }
 
+/* ── Page title ── */
+.vui-page-title {
+  font-size: var(--vui-text-xl);
+  font-weight: var(--vui-font-bold);
+  color: var(--vui-accent);
+}
+
 /* ── Section header ── */
 .vui-section-header {
   display: flex;
