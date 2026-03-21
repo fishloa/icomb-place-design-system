@@ -9,5 +9,6 @@ COPY verdant-tokens.css   /usr/share/nginx/html/
 COPY verdant-spec.md      /usr/share/nginx/html/
 COPY verdant-readme.md    /usr/share/nginx/html/
 COPY index.html           /usr/share/nginx/html/
+COPY czernin.svg          /usr/share/nginx/html/
 
 EXPOSE 80
